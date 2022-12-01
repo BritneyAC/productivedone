@@ -1,0 +1,35 @@
+.chat {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 8.5fr 1.5fr;
+  & p {
+    color: black;
+  }
+  & .messages {
+    padding: 0 3.5vmin;
+    overflow-y: auto;
+    font-size: clamp(1rem, 2vmin, 2vmax);
+  }
+  & form {
+    height: 100%;
+    width: calc(100% - 1.6rem);
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+  }
+  & input, & button {
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: clamp(.5rem, 2vmin, 3vmax);
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: white;
+    word-wrap: break-word;
+  }
+  & button {
+    width: 100%;
+    border-left: 1px solid white;
+  }
+}

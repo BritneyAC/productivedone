@@ -1,0 +1,18 @@
+.Notes {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.Notes textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  overflow: auto;
+  resize: none;
+  border: none;
+  font-size: clamp(1rem, 2vmin, 2vmax);
+}

@@ -1,0 +1,101 @@
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.newTodoList {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 10vmax;
+  left: 25vw;
+  height: 7.5vmax;
+  width: 7.5vmax;
+  background-color: hsl(270deg, 70%, 90%);
+}
+.newTodoList::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 25%;
+  height: 15%;
+  width: 75%;
+  background-color: black;
+  transform: rotateZ(135deg);
+}
+.newTodoList::after {
+  content: "";
+  position: absolute;
+  top: 57.5%;
+  left: 15%;
+  height: 15%;
+  width: 35%;
+  background-color: black;
+  transform: rotateZ(45deg);
+}
+
+.newNotesApp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1vmax;
+  bottom: 10vmax;
+  left: 50vw;
+  height: 7.5vmax;
+  width: 7.5vmax;
+  background-color: hsl(270deg, 70%, 90%);
+}
+.newNotesApp::before {
+  content: "";
+  position: absolute;
+  height: 45%;
+  width: 55%;
+  border-color: black;
+  border-top: 1vmax solid black;
+  border-bottom: 1vmax solid black;
+}
+.newNotesApp::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  height: 1vmax;
+  width: 65%;
+  background-color: black;
+}
+
+.newChatApp {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 10vmax;
+  left: 75vw;
+  height: 7.5vmax;
+  width: 7.5vmax;
+  background-color: hsl(270deg, 70%, 90%);
+}
+.newChatApp::before {
+  content: "";
+  position: absolute;
+  display: flex;
+  height: 50%;
+  width: 50%;
+  border-radius: 999rem;
+  background-color: black;
+  transform: rotateZ(135deg);
+}
+.newChatApp::after {
+  content: "";
+  position: absolute;
+  top: 44%;
+  left: 44%;
+  display: flex;
+  height: 30%;
+  width: 30%;
+  background-color: black;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 100%);
+}

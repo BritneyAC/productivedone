@@ -1,0 +1,40 @@
+.todo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 8.5fr 1.5fr;
+}
+.todo form {
+  height: 100%;
+  width: calc(100% - 1.6rem);
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+.todo input {
+  width: 100%;
+  height: 100%;
+}
+.todo input, .todo button {
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: clamp(0.5rem, 2vmin, 3vmax);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: white;
+  word-wrap: break-word;
+}
+.todo button {
+  width: 100%;
+  border-left: 1px solid white;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 20%;
+  align-items: flex-start;
+  overflow-y: auto;
+}

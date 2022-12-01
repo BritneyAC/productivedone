@@ -1,0 +1,72 @@
+.task {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.task p {
+  color: black;
+  font-size: clamp(1rem, 2vmin, 2vmax);
+}
+.task .completed, .task .notCompleted {
+  height: 75%;
+  aspect-ratio: 1/1;
+  border: 2px solid black;
+}
+.task .completed {
+  background-color: hsl(210deg, 80%, 70%);
+  position: relative;
+}
+.task .completed::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  height: 15%;
+  width: 75%;
+  background-color: black;
+  transform: rotateZ(135deg);
+}
+.task .completed::after {
+  content: "";
+  position: absolute;
+  top: 48%;
+  left: 10%;
+  height: 15%;
+  width: 35%;
+  background-color: black;
+  transform: rotateZ(45deg);
+}
+.task .notCompleted {
+  background-color: white;
+}
+.task .delete {
+  position: relative;
+  height: 75%;
+  aspect-ratio: 1/1;
+  background-color: hsl(320deg, 80%, 60%);
+  border: 2px solid black;
+  justify-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task .delete::before {
+  content: "";
+  position: absolute;
+  width: 25%;
+  height: 75%;
+  background-color: black;
+  transform: rotateZ(45deg);
+}
+.task .delete::after {
+  content: "";
+  position: absolute;
+  width: 25%;
+  height: 75%;
+  background-color: black;
+  transform: rotateZ(135deg);
+}
