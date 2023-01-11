@@ -16,7 +16,7 @@ export default function Task(props: TaskProps) {
   return (
     <div key={props.id} className={styles.task}>
       <div className={completed ? styles.completed : styles.notCompleted} onClick={toggleTodo}/>
-      <p>{props.name}</p>
+      <div className={styles.words}><p>{props.name}</p></div>
       <div className={styles.delete} onClick={()=>props.deleteTodo(props.id)}/>
     </div>
   )

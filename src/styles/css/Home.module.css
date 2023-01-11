@@ -23,12 +23,12 @@
   height: 15%;
   width: 75%;
   background-color: black;
-  transform: rotateZ(135deg);
+  transform: rotateZ(-45deg);
 }
 .newTodoList::after {
   content: "";
   position: absolute;
-  top: 57.5%;
+  top: 57%;
   left: 15%;
   height: 15%;
   width: 35%;

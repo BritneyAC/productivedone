@@ -7,7 +7,7 @@ interface WindowHoCProps {
   children: React.ReactNode;
   id: number;
   handleClose: () => void;
-  handleClick: (id: number) => void;
+  handleClick: () => void;
   width: number;
   height: number;
   posX: number;
@@ -21,8 +21,6 @@ export default function WindowHoC(props: WindowHoCProps) {
   const [height, setHeight] = useState(25)
   const [posX, setPosX] = useState(props.posX)
   const [posY, setPosY] = useState(props.posY)
-  const [mouseX, setMouseX] = useState(posX)
-  const [mouseY, setMouseY] = useState(posY)
   const [isSettingsShown, setIsSettingsShown] = useState(false)
   const main = useRef(document.querySelector("main"))
   const [event, setEvent] = useState<PointerEvent>()
@@ -34,8 +32,6 @@ export default function WindowHoC(props: WindowHoCProps) {
   }
 
   const handlePointerDownMove = (e: any) => {
-    setMouseX(e.clientX)
-    setMouseY(e.clientY)
     setEvent(e)
     resetRecent()
     if(main.current !== null) {
@@ -48,8 +44,6 @@ export default function WindowHoC(props: WindowHoCProps) {
   }
   
   const handlePointerDownResize = (e: any) => {
-    setMouseX(e.clientX)
-    setMouseY(e.clientY)
     setEvent(e)
     resetRecent()
     if(main.current !== null) {
@@ -107,8 +101,7 @@ export default function WindowHoC(props: WindowHoCProps) {
           width: `${width}vw`, 
           zIndex: `${9010 - props.recent}`}}
       id={props.id.toString()}
-      key={props.id}
-      onClick={()=>props.handleClick(props.id - 1)}
+      onClick={props.handleClick}
     >
       <div className={`${styles.bar} bar`}>
         <div className={styles.title} onPointerDown={(e) => handlePointerDownMove(e)}>

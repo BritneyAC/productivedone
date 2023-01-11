@@ -5,7 +5,7 @@ import Todo from '@/components/Todo'
 import Notes from '@/components/Notes'
 import Chat from '@/components/Chat'
 import WindowHoC from '@/components/WindowHoC'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
@@ -43,7 +43,6 @@ export default function Home() {
     setApp7,
   ]
   
-  const AppsElement = runningApps.map((todo, index) => todo)
   
   
   const handleAppClose = (id: number) => {
@@ -59,39 +58,40 @@ export default function Home() {
   }
 
   const handleClick = (id:number) => {
-    if(id - 1 >= 0 && !isNaN(id)){
-      setRecent[id - 1](0)
-      setRecent.forEach(app => app(prevCount => prevCount + 1))
-    }
+    setRecent[id - 1](0)
+    setRecent.forEach((app, index) => index !== id - 1 && app(1))
+    console.log(id, getRecent)
   }
   
   const TodoApp = () => {
     const id = idIncrement + 1
     setIdIncrement(id)
-    setRecent.filter(app => app).forEach(app => app(prevCount => prevCount + 1))
+    setRecent[id - 1](0)
     return (
-      <WindowHoC title="Todo" recent={getRecent[id - 1]} id={id} handleClick={handleClick} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
+      <WindowHoC title="Todo" recent={getRecent[id - 1]} key={id} id={id} handleClick={()=>handleClick(id)} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
         <Todo />
       </WindowHoC>
     )
   }
-
+  
   const NotesApp = () => {
     const id = idIncrement + 1
     setIdIncrement(id)
+    setRecent[id - 1](0)
     return (
-      <WindowHoC title="Notes" recent={getRecent[id - 1]} id={id} handleClick={handleClick} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
+      <WindowHoC title="Notes" recent={getRecent[id - 1]} key={id} id={id} handleClick={()=>handleClick(id)} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
         <Notes />
       </WindowHoC>
     )
   }
-
+  
   const ChatApp = () => {
     const id = idIncrement + 1
     setIdIncrement(id)
     setIsChatRunning(true)
+    setRecent[id - 1](0)
     return (
-      <WindowHoC title="Chat" recent={getRecent[id - 1]} id={id} handleClick={handleClick} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
+      <WindowHoC title="Chat" recent={getRecent[id - 1]} key={id} id={id} handleClick={()=>handleClick(id)} handleClose={() => handleAppClose(id)} posX={runningApps.length * 10} posY={runningApps.length * 10} width={25} height={25}>
         <Chat />
       </WindowHoC>
     )
@@ -121,8 +121,8 @@ export default function Home() {
 
       <main className={styles.main}>
         {runningApps}
-        {runningApps.length < 9 && <div className={styles.newTodoList} onClick={newTodoList} />}
-        {runningApps.length < 9 && <div className={styles.newNotesApp} onClick={newNotesApp} />}
+        {runningApps.length < 8 && <div className={styles.newTodoList} onClick={newTodoList} />}
+        {runningApps.length < 8 && <div className={styles.newNotesApp} onClick={newNotesApp} />}
         {!isChatRunning && <div className={styles.newChatApp} onClick={newChatApp} />}
       </main>
     </div>
